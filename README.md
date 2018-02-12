@@ -32,5 +32,5 @@ Things you may want to cover:
 ![wireframe3](https://github.com/Jabernathy88/gallivant/blob/data_models_1/wireframes/wireframe3.png)
 ![wireframe4](https://github.com/Jabernathy88/gallivant/blob/data_models_1/wireframes/wireframe4.png)
 ![wireframe5](https://github.com/Jabernathy88/gallivant/blob/data_models_1/wireframes/wireframe5.png)
-![wireframe6](https://github.com/Jabernathy88/gallivant/blob/data_models_1/wireframes/wireframe6.png)
+![wireframe6](https://github.com/Jabernathy88/gallivant/blob/data_models_1/wireframes/wireframes6.png)
 
