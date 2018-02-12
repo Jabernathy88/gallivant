@@ -6,29 +6,52 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-require_relative './song_data.rb'
-require_relative './artist_data.rb'
+User.destroy_all
+City.destroy_all
+Post.destroy_all
 
-Song.destroy_all
-Artist.destroy_all
+users = []
+cities = []
 
-song_data = get_song_data
-artist_data = get_artist_data
+user << User.create(
+    name: 'Eric Lu',
+    photo_url: 'https://source.unsplash.com/A_gTI6Jhsj0/300x300',
+    is_logged_in: false
+)
 
-song_data.each_pair do |artist_name, songs|
-  info = artist_data[artist_name]
-  current_artist = Artist.create!({
-    name:         info[:name],
-    photo_url:    info[:photo_url],
-    nationality:  info[:nationality]
-  })
+user << User.create(
+    name: 'Jeremy Abernathy',
+    photo_url: 'https://source.unsplash.com/A_gTI6Jhsj0/300x300',
+    is_logged_in: false
+)
 
-  songs.each do |song|
-    Song.create!({
-      title:        song[:title],
-      album:        song[:album],
-      preview_url:  song[:preview_link],
-      artist:       current_artist
-    })
-  end
+user << User.create(
+    name: 'Supriya Yerramilli',
+    photo_url: 'https://source.unsplash.com/A_gTI6Jhsj0/300x300',
+    is_logged_in: false
+)
+
+user << User.create(
+    name: 'Jasen Baker',
+    photo_url: 'https://source.unsplash.com/A_gTI6Jhsj0/300x300',
+    is_logged_in: false
+)
+
+cities << City.create(
+    name: 'Atlanta',
+    city_url: 'http://pics4.city-data.com/cpicc/cfiles34956.jpg'
+)
+
+cities << City.create(
+    name: 'San Francisco',
+    city_url: 'http://www.socketsite.com/wp-content/uploads/2017/03/San-Francisco-Skyline-Rendering-2017-West.jpg'
+)
+
+users.each do |user|
+    cities.each do |city|
+        Post.create(
+            user_id: user.id,
+            city_id: city.id
+        )
+    end
 end
