@@ -25,3 +25,6 @@ Things you may want to cover:
 
 ## User Stories
 [Trello](https://trello.com/b/9VyL7v2Q/group-project-vegabond)
+
+## Wireframes
+![wireframe1]()
