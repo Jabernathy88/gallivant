@@ -6,32 +6,37 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.destroy_all
-City.destroy_all
+
 Post.destroy_all
+City.destroy_all
+User.destroy_all
+
+ActiveRecord::Base.connection.tables.each do |t|
+    ActiveRecord::Base.connection.reset_pk_sequence!(t)
+end
 
 users = []
 cities = []
 
-user << User.create(
+users << User.create(
     name: 'Eric Lu',
     photo_url: 'https://source.unsplash.com/A_gTI6Jhsj0/300x300',
     is_logged_in: false
 )
 
-user << User.create(
+users << User.create(
     name: 'Jeremy Abernathy',
     photo_url: 'https://source.unsplash.com/A_gTI6Jhsj0/300x300',
     is_logged_in: false
 )
 
-user << User.create(
+users << User.create(
     name: 'Supriya Yerramilli',
     photo_url: 'https://source.unsplash.com/A_gTI6Jhsj0/300x300',
     is_logged_in: false
 )
 
-user << User.create(
+users << User.create(
     name: 'Jasen Baker',
     photo_url: 'https://source.unsplash.com/A_gTI6Jhsj0/300x300',
     is_logged_in: false
@@ -51,7 +56,9 @@ users.each do |user|
     cities.each do |city|
         Post.create(
             user_id: user.id,
-            city_id: city.id
+            city_id: city.id,
+            title: 'Atlanta is Great!!!',
+            description: 'Atlanta is where the players play'
         )
     end
 end
