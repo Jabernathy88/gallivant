@@ -1,5 +1,11 @@
 {
-  "name": "project_vagabond",
-  "private": true,
-  "dependencies": {}
+  "name": "project_gallivant",
+  "engines": {
+    "node": "8.7.0"
+  },
+  "scripts": {
+    "build": "cd client && npm install && npm run build && cd ..",
+    "deploy": "cp -a client/build/. public/",
+    "postinstall": "npm run build && npm run deploy && echo 'Client built!'"
+  }
 }
