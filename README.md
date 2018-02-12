@@ -25,3 +25,12 @@ Things you may want to cover:
 
 ## User Stories
 [Trello](https://trello.com/b/9VyL7v2Q/group-project-vegabond)
+
+## Wireframes
+![wireframe1](https://github.com/Jabernathy88/gallivant/blob/data_models_1/wireframes/wireframe1.png)
+![wireframe2](https://github.com/Jabernathy88/gallivant/blob/data_models_1/wireframes/wireframe2.png)
+![wireframe3](https://github.com/Jabernathy88/gallivant/blob/data_models_1/wireframes/wireframe3.png)
+![wireframe4](https://github.com/Jabernathy88/gallivant/blob/data_models_1/wireframes/wireframe4.png)
+![wireframe5](https://github.com/Jabernathy88/gallivant/blob/data_models_1/wireframes/wireframe5.png)
+![wireframe6](https://github.com/Jabernathy88/gallivant/blob/data_models_1/wireframes/wireframes6.png)
+
