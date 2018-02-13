@@ -18,6 +18,15 @@ end
 users = []
 cities = []
 
+
+users << User.create(
+name: 'Anonymous',
+photo_url: 'https://source.unsplash.com/A_gTI6Jhsj0/300x300',
+is_logged_in: true
+
+)
+
+
 users << User.create(
     name: 'Eric Lu',
     photo_url: 'https://source.unsplash.com/A_gTI6Jhsj0/300x300',
