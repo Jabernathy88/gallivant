@@ -4,7 +4,16 @@ class Homepage extends Component {
 
     render() {
         return(
-<div>Hello from the homepage!</div>
+<div>
+{
+    this.props.cities.map((city)=>{
+        return(
+           <a href={`/cities/${city.id}`}> <h1>{city.name}</h1></a>
+        )
+    })
+}
+
+</div>
 
 
 
