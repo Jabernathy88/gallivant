@@ -4,22 +4,32 @@ class Api::UsersController < ApplicationController
     render json: @users
     end
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     def show
     @user = User.find(params[:id])
     render json: @user
 =======
+=======
+>>>>>>> c7a99f43fd433fc2b38f850e770496df9daa59b6
     
     def show
     @user = User.find(params[:id])
     render json: @user 
+<<<<<<< HEAD
+>>>>>>> c7a99f43fd433fc2b38f850e770496df9daa59b6
+=======
 >>>>>>> c7a99f43fd433fc2b38f850e770496df9daa59b6
     end
 
     def create
     @user = User.create!(user_params)
 <<<<<<< HEAD
+<<<<<<< HEAD
     render json: @user
+=======
+    redirect_to "/users/#{@user.id}" 
+>>>>>>> c7a99f43fd433fc2b38f850e770496df9daa59b6
 =======
     redirect_to "/users/#{@user.id}" 
 >>>>>>> c7a99f43fd433fc2b38f850e770496df9daa59b6

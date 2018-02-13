@@ -3,6 +3,7 @@ class Api::CitiesController < ApplicationController
         @cities = City.all
         render json: @cities
 <<<<<<< HEAD
+<<<<<<< HEAD
         end
     
         def show
@@ -31,6 +32,8 @@ class Api::CitiesController < ApplicationController
             params.require(:City).permit(:name, :city_url)
         end
 =======
+=======
+>>>>>>> c7a99f43fd433fc2b38f850e770496df9daa59b6
     end
         
     def show
@@ -58,5 +61,8 @@ class Api::CitiesController < ApplicationController
     def city_params
         params.require(:city).permit(:name, :city_url)
     end
+<<<<<<< HEAD
+>>>>>>> c7a99f43fd433fc2b38f850e770496df9daa59b6
+=======
 >>>>>>> c7a99f43fd433fc2b38f850e770496df9daa59b6
 end
