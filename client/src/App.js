@@ -12,7 +12,7 @@ class App extends Component {
 
   async componentWillMount() {
     const response = await axios.get('/api/cities')
-    console.log(response.data)
+    // console.log(response.data)
     this.setState({cities: response.data})
 
   }
