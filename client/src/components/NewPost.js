@@ -1,39 +1,26 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import axios from 'axios'
 
 class NewPost extends Component {
-
-    state = {
-        newPost: {
-            title: " ",
-            description: " ",
-            user_id: ""
-        }
-      
-
-        }
-
-        
-
-        // newPostPost = () => {
-        //     axios
-        //         .post("/api/posts", this.state.newPost)
-        //         .then((response) => {
-        //             const updateNewPost = {
-        //                 ...this.state.newPost
-        //             }
-
-        //         })
-
-        // }
-
-    
 
     render() {
 
         return (
 
-            <div>hello from the posts!</div>
+            <div>
+                < form onSubmit={this.props.newPosts} >
+                    <input
+                        name="title" placeholder="title" type="text" onChange={this.props.handleChange}
+                    />
+                    <textarea
+                        name="description" placeholder="description" type="text" onChange={this.props.handleChange}
+                        row="10" />
+
+                    <input type="submit" value="submit" />
+
+                </form>
+
+            </div>
 
         )
 
