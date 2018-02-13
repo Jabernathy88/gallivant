@@ -1,6 +1,6 @@
 class Api::PostsController < ApplicationController
     def index
-        @posts = Post.all
+        @posts = Post.where(city_id: params[:id])
         render json: @posts
         end
     
