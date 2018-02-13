@@ -1,11 +1,14 @@
 import React, {Component} from 'react'
 import axios from 'axios'
+import NewPost from './NewPost'
+
 class City extends Component {
 
     state = {
         city: {},
         posts: [],
-        users: []
+        users: [],
+        isNewPost: false
     }
 
     async componentWillMount() {
@@ -33,7 +36,8 @@ class City extends Component {
         const posts = this.state.posts
         const users = this.state.users
         // console.log(`this is users state:`, users) console.log(posts)
-        return (
+        return ( 
+            this.state.isNewPost ? <NewPost /> :
             <div>
 
                 <h2>{city.name}</h2>
@@ -60,7 +64,7 @@ class City extends Component {
 
                 </div>
                 {/* new post button */}
-                <button>New Post</button>
+                <button onClick= {this.setState({isNewPost: true})}>New Post</button>
             </div>
 
         )
