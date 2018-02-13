@@ -23,7 +23,7 @@ class City extends Component {
                 }
 
             })
-            postArray.reverse()
+        postArray.reverse()
         this.setState({city: responseCity.data, posts: postArray, users: responseUsers.data})
 
     }
@@ -32,8 +32,7 @@ class City extends Component {
         const city = this.state.city
         const posts = this.state.posts
         const users = this.state.users
-        console.log(`this is users state:`, users)
-        // console.log(posts)
+        // console.log(`this is users state:`, users) console.log(posts)
         return (
             <div>
 
@@ -42,23 +41,26 @@ class City extends Component {
 
                 <div>
 
-                    {this.state.posts.map((post) => {
-                        const userId = post.user_id
-                        console.log(typeof userId)
-                        // const user = this.state.users.id[userId]
+                    {this
+                        .state
+                        .posts
+                        .map((post) => {
+                            const userId = post.user_id - 1
+                            const user = this.state.users[userId]
+                            console.log(this.state.users[userId])
 
-                    return (
-                        <div>
-                            <h3>{post.title}</h3>
-                            {/* <p>{user.name}</p> */}
-                            <p>{post.description}</p>
-                        </div>
-                    )
-                })}
+                            return (
+                                <div>
+                                    <h3>{post.title}</h3>
+                                    <p>{user.name}</p>
+                                    <p>{post.description}</p>
+                                </div>
+                            )
+                        })}
 
                 </div>
                 {/* new post button */}
-<button>New Post</button>
+                <button>New Post</button>
             </div>
 
         )
