@@ -119,6 +119,7 @@ class City extends Component {
                                         <div>
                                         <h3>{post.title}</h3>
                                         <p>{post.description}</p>
+                                        <a href={`/posts/${post.id}`}>Read More</a>
                                         </div>
                                     </CommentContainer>
                                 )
