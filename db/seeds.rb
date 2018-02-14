@@ -53,7 +53,7 @@ users << User.create(
 
 cities << City.create(
     name: 'Atlanta',
-    city_url: 'http://pics4.city-data.com/cpicc/cfiles34956.jpg'
+    city_url: 'https://images1.newscred.com/Zz01YmZiODgyNTE4ZDFkYzQwZWM0MTY2NjhiYzNmNjZkYw==?height=480&width=800'
 )
 
 cities << City.create(
