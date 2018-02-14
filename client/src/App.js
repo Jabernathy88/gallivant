@@ -19,6 +19,14 @@ class App extends Component {
     this.setState({cities: response.data})
 
   }
+  
+  removePost = (post) =>{
+    const postToRemove = this.state.posts.indexOf(post)
+    const posts = [...this.state.posts]
+    posts.splice(postToRemove, 1)
+    this.componentWillMount()
+    this.setState({posts})
+  }
 
   render() {
     const homepageComponent = () => {
@@ -28,6 +36,12 @@ class App extends Component {
     //   return (<City {...props}/>)
     // }
 
+    const postComoponet = (props) =>{
+      return(
+        <Post {...props} removePost={this.removePost}/>
+      )
+    }
+
   
 
   return (
@@ -36,7 +50,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" render={homepageComponent}/>
           <Route exact path="/cities/:id" component={City}/> 
-          <Route exact path="/posts/:id" component={Post}/>
+          <Route exact path="/posts/:id" render={postComoponet}/>
         </Switch>
       </div>
     </Router>
