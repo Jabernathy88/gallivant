@@ -3,6 +3,7 @@ import axios from 'axios'
 import NewPost from './NewPost'
 import {Header, Footer} from './StyledComponents/HeaderFooter'
 import {PageContainer, SplashImgTwo, ContainerTwo, CommentContainer, CommentLeft} from './StyledComponents/Containers'
+import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom'
 
 class City extends Component {
 
@@ -117,7 +118,7 @@ class City extends Component {
                                         <p>{user.name}</p>
                                         </div>
                                         <div>
-                                        <h3>{post.title}</h3>
+                                        <a href={`/posts/${post.id}`}><h3>{post.title}</h3></a>
                                         <p>{post.description}</p>
                                         </div>
                                     </CommentContainer>
