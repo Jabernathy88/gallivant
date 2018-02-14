@@ -8,6 +8,8 @@ export const PageContainer = styled.div`
     width: 100vw;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-color:#F7F9F9;
 `
 
@@ -20,6 +22,34 @@ export const ContainerOne = styled.div`
 
 
 `
+export const ContainerTwo = ContainerOne.extend`
+    flex-direction: column;
+    justify-content: space-between;
+    
+
+`
+
+export const CommentContainer = styled.div`
+    margin: 10px auto;
+    height: 20vh;
+    width: 50%;
+    display:flex;
+    border: 1px solid black;
+    background-color:#E0D0C1;
+
+`
+export const CommentLeft = styled.div`
+    height: 70%;
+    width: 45%;
+    overflow: hidden;
+    
+
+    img{
+        border-radius: 100px;
+        height: 100%;
+        width: auto;
+    }
+`
 
 export const SplashImg = styled.div`
         height: 40vh;
@@ -31,6 +61,12 @@ export const SplashImg = styled.div`
             height: auto;
             width: auto;
             transform: translateY(-650px);
+        }
+`
+export const SplashImgTwo = SplashImg.extend`
+
+        img{
+            transform: translateY(-250px) translateX(-55px);
         }
 `
 
@@ -52,6 +88,7 @@ export const LinkContainer = styled.div`
             height: 50%;
             width: auto;
             transform: translateY(-20px);
+            border: 1px solid black;
         }
 
 `
@@ -59,4 +96,11 @@ export const LinkContainer = styled.div`
 
 
 
-export default { PageContainer, ContainerOne, SplashImg, LinkContainer }
+export default { PageContainer, 
+                ContainerOne, 
+                SplashImg,  
+                LinkContainer, 
+                ContainerTwo, 
+                SplashImgTwo,
+                CommentContainer,
+                CommentLeft }
