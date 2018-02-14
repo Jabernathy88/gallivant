@@ -91,6 +91,7 @@ class City extends Component {
                 <PageContainer>
                     <Header>
                     <h1>RoamAtl</h1>
+                    <a href='/'><h2>Home</h2></a>
                     </Header>
                     <h2>{city.name}</h2>
                     <SplashImgTwo>

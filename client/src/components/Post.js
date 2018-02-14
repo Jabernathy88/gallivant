@@ -63,6 +63,7 @@ class Post extends Component  {
         return (
 
     this.state.redirect ? <Redirect to={`/cities/${city.id}`} /> :
+        
             <div>
                 <h1>{post.title}</h1>
                 <h2>{city.name}</h2>
@@ -70,6 +71,7 @@ class Post extends Component  {
                 <p>{post.description}</p>
                 <button>Edit</button>
                 <button onClick={this.deleteConfirm}>Delete</button>
+                <a href={`/cities/${city.id}`}>Go back to {city.name}</a>
                 
             </div>
         )
