@@ -8,14 +8,24 @@ import Post from './components/Post'
 class App extends Component {
 
   state = {
-    cities: []
+    cities: [],
+    posts: []
   }
 
   async componentWillMount() {
     const response = await axios.get('/api/cities')
+    const resPost = await axios.get('/api/posts')
     // console.log(response.data)
     this.setState({cities: response.data})
 
+  }
+  
+  removePost = (post) =>{
+    const postToRemove = this.state.posts.indexOf(post)
+    const posts = [...this.state.posts]
+    posts.splice(postToRemove, 1)
+    this.componentWillMount()
+    this.setState({posts})
   }
 
   render() {
@@ -26,6 +36,12 @@ class App extends Component {
     //   return (<City {...props}/>)
     // }
 
+    const postComoponet = (props) =>{
+      return(
+        <Post {...props} removePost={this.removePost}/>
+      )
+    }
+
   
 
   return (
@@ -34,7 +50,11 @@ class App extends Component {
         <Switch>
           <Route exact path="/" render={homepageComponent}/>
           <Route exact path="/cities/:id" component={City}/> 
+<<<<<<< HEAD
           <Route exact path="/posts/:id" component={Post}/>
+=======
+          <Route exact path="/posts/:id" render={postComoponet}/>
+>>>>>>> ffb07697ca2ff586dd68c9fff1e5a3143ffe78e3
         </Switch>
       </div>
     </Router>

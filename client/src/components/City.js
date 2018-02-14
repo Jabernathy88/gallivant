@@ -92,6 +92,7 @@ class City extends Component {
                 <PageContainer>
                     <Header>
                     <h1>RoamAtl</h1>
+                    <a href='/'><h2>Home</h2></a>
                     </Header>
                     <h2>{city.name}</h2>
                     <SplashImgTwo>
@@ -120,6 +121,7 @@ class City extends Component {
                                         <div>
                                         <a href={`/posts/${post.id}`}><h3>{post.title}</h3></a>
                                         <p>{post.description}</p>
+                                        <a href={`/posts/${post.id}`}>Read More</a>
                                         </div>
                                     </CommentContainer>
                                 )

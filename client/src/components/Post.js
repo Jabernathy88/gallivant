@@ -1,63 +1,86 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import {Redirect} from 'react-router-dom'
 import axios from 'axios'
-import EditPost from './EditPost'
 
-class Post extends Component {
+class Post extends Component  {
 
     state = {
+        post: {},
         city: {},
-        posts: {},
-        users: {},
-        isEditPost: false
+        user: {},
+        isStateNotReady: true,
+        redirect: false
     }
 
     async componentWillMount() {
-        const id = parseInt(this.props.match.params.id)
-        const responsePosts = await axios.get(`/api/posts/${id}`)
-        const responseUsers = await axios.get(`/api/users/${responsePosts.data.city_id}`)
-        
-        const responseCity = await axios.get(`/api/cities/${responsePosts.data.user_id}`)
-        this.setState({ city: responseCity.data, posts: responsePosts.data, users: responseUsers.data })
+        const resPost = await axios.get(`/api/posts/${this.props.match.params.id}`)
+        const resCity = await axios.get(`/api/cities/${resPost.data.city_id}`)
+        const resUser = await axios.get(`/api/users/${resPost.data.user_id}`)
+
+
+        this.setState({post: resPost.data, city: resCity.data, user: resUser.data, isStateNotReady: false})
+    }
+
+    deletePost = async ()=>{
+        const postId = this.props.match.params.id
+        console.log(postId)
+        const res = await axios.delete(`/api/posts/${postId}`)
+        const post = this.state.post
+        this.props.removePost(post)
 
     }
 
-    editPosts = async() => {
-        try {
-            const response = await axios.patch(`/api/posts/${this.state.posts.id}`, this.state.posts)
-            const updatedPost = response.data
-            console.log(response.data)
-            this.setState({updatedPost, isEditPost: false})
-        } catch(error) {
-            console.log(error)
-        }
+    setStateToTrue = () =>{
+
+        this.setState({redirect: true})
     }
 
-    handleChange = (event) => {
-        const updatePost = {
-            ...this.state.posts
-        }
-        updatePost[event.target.name] = event.target.value
-        this.setState({posts: updatePost})
-    }
-
-    handleEdit = (event) => {
-        event.preventDefault()
-        this.editPosts()
-    }
+    handleDelete = () =>{
     
+        this.setStateToTrue()
+        this.deletePost()
+        
+    }
+
+    deleteConfirm = () => {
+        if (window.confirm(`Are you sure you want to delete ${this.state.post.title}`)){
+            this.handleDelete()
+        }
+        else {
+            this.setState({redirect: true})
+        }
+    }
+
 
     render() {
+        const post = this.state.post
+        const city = this.state.city
+        const user = this.state.user
+        
         return (
-            this.state.isEditPost ? <EditPost handleChange={this.handleChange} posts={this.state.posts} handleEdit={this.handleEdit} editPosts={this.editPosts} /> :
+
+    this.state.redirect ? <Redirect to={`/cities/${city.id}`} /> :
+        
             <div>
-                <p>Title: {this.state.posts.title}</p>
-                <p>UserName: {this.state.users.name}</p>
-                <p>City: {this.state.city.name}</p>
-                <p>Description: {this.state.posts.description}</p>
-                <button onClick={() => { { this.setState({ isEditPost: true }) } }}>Edit Post</button>
+                <h1>{post.title}</h1>
+                <h2>{city.name}</h2>
+                <h3>by: {user.name}</h3>
+                <p>{post.description}</p>
+                <button>Edit</button>
+                <button onClick={this.deleteConfirm}>Delete</button>
+                <a href={`/cities/${city.id}`}>Go back to {city.name}</a>
+                
             </div>
-        );
+        )
+
+
+
     }
+
+
+
+
 }
 
-export default Post;
+
+export default Post
