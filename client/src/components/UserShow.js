@@ -8,7 +8,7 @@ class UserShow extends Component {
     state = {
         user: {},
         posts: [],
-        redirect: false,
+        
     }
     async componentWillMount(){
 
@@ -32,17 +32,13 @@ class UserShow extends Component {
         
     }
 
-    handleLogin = ()=>{
-        this.props.loginUser(this.state.user.id)
-        this.setState({redirect: true})
 
-    }
 
 
     render(){
         console.log(this.state.post)
         return(
-            this.state.redirect ? <Redirect to='/' /> :
+            
             <div>
                 <h1>{this.state.user.name}</h1>
                 <img width="200" src={this.state.user.photo_url} alt={this.state.user.name}/>
@@ -57,7 +53,7 @@ class UserShow extends Component {
                     )
                 })
             }
-            <button onClick={this.handleLogin}>Login</button>
+            
             </div>
         )
     }

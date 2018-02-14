@@ -8,12 +8,12 @@ class Homepage extends Component {
 
     render() {
         return (
-            <PageContainer>
-                <Header >
-                    <h1>Roam</h1>
-                    
-                    <a href={`/users`}><h2>Sign In/Sign Up</h2></a>
-                </Header>
+            
+                
+                
+                    <div>
+                   
+                
                 <SplashImg>
                     <img src={skyline} alt="Skyline" />
                 </SplashImg>
@@ -32,10 +32,9 @@ class Homepage extends Component {
                         })
                     }
                 </ContainerOne>
-                <Footer />
-            </PageContainer>
+             
 
-
+                </div>
 
 
         )

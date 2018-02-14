@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
 import axios from 'axios'
-import Redirect from 'react-router-dom/Redirect';
+// import Redirect from 'react-router-dom/Redirect';
 
 const  NewPost =(props) => {
 

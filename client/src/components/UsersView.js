@@ -1,14 +1,23 @@
 import React, {Component} from 'react'
+import {Redirect} from 'react-router-dom'
 
 
 
 
 class UsersView extends Component {
+    state = {
+        redirect: false,
+    }
 
-    
+    handleLogin = (userId)=>{
+        this.props.loginUser(userId)
+        this.setState({redirect: true})
+
+    }
     render(){
-        console.log(this.props.users)
+    
         return(
+            this.state.redirect ? <Redirect to='/' /> :
         <div>
             {
                 this.props.users.map((user)=>{
@@ -21,6 +30,7 @@ class UsersView extends Component {
                         </div>
                     </div>
                     <a href={`/users/${user.id}`}>to user posts</a>
+                    <button onClick={()=>this.handleLogin(user.id)}>Login</button>
                     </div>
                     )
                 })
