@@ -33,11 +33,6 @@ class Post extends Component {
     }
 
     handleChange = (event) => {
-        // const attribute = event.target.name
-        // const val = event.target.value
-        // const editPost = { ...this.state.posts }
-        // editPost[attribute] = val
-        // this.setState({ editPost })
         const updatePost = {
             ...this.state.posts
         }
