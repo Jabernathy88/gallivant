@@ -14,7 +14,7 @@ class City extends Component {
         newPost: {
             title: "",
             description: "",
-            user_id: "1", //hacked motherfucker
+            user_id: `${this.props.userId}`, //hacked motherfucker
             city_id: `${this.props.match.params.id}`
         }
     }
@@ -42,7 +42,8 @@ class City extends Component {
     addNewPost = (newPost) => {
         const posts = [...this.state.posts]
         posts.push(newPost)
-        this.setState({ posts })
+        this.componentWillMount()
+        this.setState({ posts: posts, isNewPost: false })
 
 
     }
@@ -86,7 +87,7 @@ class City extends Component {
         const users = this.state.users
         // console.log(`this is users state:`, users) console.log(posts)
         return (
-            this.state.isNewPost ? <NewPost handleChange={this.handleChange} newPosts={this.newPostPost} /> :
+            this.state.isNewPost ? <NewPost handleChange={this.handleChange} newPosts={this.newPostPost}  /> :
 
                 <PageContainer>
                     <Header>
