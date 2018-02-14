@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import NewPost from './NewPost'
+import {Header, Footer} from './StyledComponents/HeaderFooter'
+import {PageContainer, SplashImgTwo, ContainerTwo, CommentContainer, CommentLeft} from './StyledComponents/Containers'
 
 class City extends Component {
 
@@ -12,8 +14,8 @@ class City extends Component {
         newPost: {
             title: "",
             description: "",
-            user_id: "",
-            city_id: ""
+            user_id: "1", //hacked motherfucker
+            city_id: `${this.props.match.params.id}`
         }
     }
 
@@ -50,7 +52,9 @@ class City extends Component {
         const val = event.target.value
         const newPost = { ...this.state.newPost }
         newPost[attribute] = val
+        
         this.setState({ newPost })
+        
     }
 
 
@@ -61,13 +65,12 @@ class City extends Component {
         axios
             .post("/api/posts", this.state.newPost)
             .then((response) => {
-                const updateNewPost = {
-                    ...this.state.newPost
+                const updateNewPost = this.state.newPost
 
-                }
+                
                 updateNewPost._id = response.data._id
-                updateNewPost.user_id = 1
-                updateNewPost.city_id = 1
+                
+                console.log(`this is userId: ${updateNewPost.user_id} and this is cityId: ${updateNewPost.city_id}`)
                 this.addNewPost(updateNewPost)
 
             }).catch((error) => {
@@ -84,12 +87,17 @@ class City extends Component {
         // console.log(`this is users state:`, users) console.log(posts)
         return (
             this.state.isNewPost ? <NewPost handleChange={this.handleChange} newPosts={this.newPostPost} /> :
-                <div>
 
+                <PageContainer>
+                    <Header>
+                    <h1>RoamAtl</h1>
+                    </Header>
                     <h2>{city.name}</h2>
-                    <img width="200" src={city.city_url} />
+                    <SplashImgTwo>
+                    <img src={city.city_url} alt={city.name}/>
+                    </SplashImgTwo>
 
-                    <div>
+                    <ContainerTwo>
 
                         {this
                             .state
@@ -97,21 +105,30 @@ class City extends Component {
                             .map((post) => {
                                 const userId = post.user_id - 1
                                 const user = this.state.users[userId]
-                                console.log(this.state.users[userId])
+                                // console.log(this.state.users[userId])
 
                                 return (
-                                    <div>
-                                        <h3>{post.title}</h3>
+                                    <CommentContainer>
+                                        <div>
+                                        
+                                        <CommentLeft>
+                                        <img src={user.photo_url} alt={user.name}/>
+                                        </CommentLeft>
                                         <p>{user.name}</p>
+                                        </div>
+                                        <div>
+                                        <h3>{post.title}</h3>
                                         <p>{post.description}</p>
-                                    </div>
+                                        </div>
+                                    </CommentContainer>
                                 )
                             })}
 
-                    </div>
+                    </ContainerTwo>
                     {/* new post button */}
                     <button onClick={() => { { this.setState({ isNewPost: true }) } }}>New Post</button>
-                </div>
+                    <Footer />
+                </PageContainer>
 
         )
     }
