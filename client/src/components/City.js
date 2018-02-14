@@ -14,8 +14,8 @@ class City extends Component {
         newPost: {
             title: "",
             description: "",
-            user_id: "",
-            city_id: ""
+            user_id: "1", //hacked motherfucker
+            city_id: `${this.props.match.params.id}`
         }
     }
 
@@ -52,7 +52,9 @@ class City extends Component {
         const val = event.target.value
         const newPost = { ...this.state.newPost }
         newPost[attribute] = val
+        
         this.setState({ newPost })
+        
     }
 
 
@@ -63,13 +65,12 @@ class City extends Component {
         axios
             .post("/api/posts", this.state.newPost)
             .then((response) => {
-                const updateNewPost = {
-                    ...this.state.newPost
+                const updateNewPost = this.state.newPost
 
-                }
+                
                 updateNewPost._id = response.data._id
-                updateNewPost.user_id = 1
-                updateNewPost.city_id = 1
+                
+                console.log(`this is userId: ${updateNewPost.user_id} and this is cityId: ${updateNewPost.city_id}`)
                 this.addNewPost(updateNewPost)
 
             }).catch((error) => {
@@ -104,7 +105,7 @@ class City extends Component {
                             .map((post) => {
                                 const userId = post.user_id - 1
                                 const user = this.state.users[userId]
-                                console.log(this.state.users[userId])
+                                // console.log(this.state.users[userId])
 
                                 return (
                                     <CommentContainer>

@@ -1,19 +1,19 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
-class NewPost extends Component {
+const  NewPost =(props) => {
 
-    render() {
+
 
         return (
 
             <div>
-                < form onSubmit={this.props.newPosts} >
+                < form onSubmit={props.newPosts} >
                     <input
-                        name="title" placeholder="title" type="text" onChange={this.props.handleChange}
+                        name="title" placeholder="title" type="text" onChange={props.handleChange}
                     />
                     <textarea
-                        name="description" placeholder="description" type="text" onChange={this.props.handleChange}
+                        name="description" placeholder="description" type="text" onChange={props.handleChange}
                         row="10" />
 
                     <input type="submit" value="submit" />
@@ -26,6 +26,5 @@ class NewPost extends Component {
 
     }
 
-}
 
 export default NewPost
