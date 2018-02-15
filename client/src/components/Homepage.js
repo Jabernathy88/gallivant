@@ -14,9 +14,6 @@ class Homepage extends Component {
             <div>
 
 
-                <SplashImg>
-                    <img src={skyline} alt="Skyline" />
-                </SplashImg>
 
                 <ContainerOne>
                     <h2>{this.props.user.name}</h2>

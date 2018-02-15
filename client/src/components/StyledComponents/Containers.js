@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import Skyline from './img/splash.jpg'
 
 
 
@@ -15,10 +16,15 @@ export const PageContainer = styled.div`
 
 export const ContainerOne = styled.div`
     width: 100%;
+    height: 100vh;
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex: 1 0 auto;
+    background: url(${Skyline}) center no-repeat;
+    background-size: cover;
+
+  
 
 
 `
