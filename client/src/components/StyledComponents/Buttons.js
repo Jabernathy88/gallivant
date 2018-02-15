@@ -22,5 +22,18 @@ export const Button = styled.button`
         }
 `
 
+export const ButtonLogin = Button.extend`
+    height: 25px;
+    width: 125px;
+    font-size: 16px;
+    background-color:#2E4052;
 
-export default {Button}
+    :hover {
+        color:#2E4052;
+        background-color:#FFC857;;
+
+    }
+`
+
+
+export default {Button, ButtonLogin}

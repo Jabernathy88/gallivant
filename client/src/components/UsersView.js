@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
-import {Redirect} from 'react-router-dom'
+import {Redirect, Link} from 'react-router-dom'
+import {Button, ButtonLogin} from './StyledComponents/Buttons'
+import { ContainerThree, UserContainer, UserImgContainer } from './StyledComponents/Containers'
 
 
 
@@ -18,24 +20,24 @@ class UsersView extends Component {
     
         return(
             this.state.redirect ? <Redirect to='/' /> :
-        <div>
+        <ContainerThree>
             {
                 this.props.users.map((user)=>{
                     return(
-                    <div>
-                    <div>
+                    <UserContainer>
+        
                         <h2>{user.name}</h2>
-                        <div>
-                            <img width="200" src={user.photo_url} alt={user.name}/>
-                        </div>
-                    </div>
-                    <a href={`/users/${user.id}`}>to user posts</a>
-                    <button onClick={()=>this.handleLogin(user.id)}>Login</button>
-                    </div>
+                        <UserImgContainer>
+                            <img src={user.photo_url} alt={user.name}/>
+                        </UserImgContainer>
+    
+                    <Link to={`/users/${user.id}`}>to user posts</Link>
+                    <ButtonLogin onClick={()=>this.handleLogin(user.id)}>Login</ButtonLogin>
+                    </UserContainer>
                     )
                 })
             }
-        </div>
+        </ContainerThree>
         )
     }
 
