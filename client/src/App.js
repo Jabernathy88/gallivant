@@ -136,7 +136,7 @@ class App extends Component {
       <Header>
         <h1><a href="/">Roam</a></h1>
         {this.state.isUserLogedIn ? <div><a href={`/users/${this.state.currentUser.id}`}>{this.state.currentUser.name}/</a><a href="/">SignOut</a></div>
-        : <div><a href="/users">Sign-In/</a><a href="/users/new">Sign-up</a></div>
+        : <div style={{marginRight: "50px"}}><a href="/users">Sign-In/</a><a href="/users/new">Sign-up</a></div>
         }
       </Header>
       <Router>

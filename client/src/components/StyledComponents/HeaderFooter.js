@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 
 export const Header = styled.header`
-    height: 20vh;
+    height: 10vh;
     width: 100vw;
     background-color:#00A676;
     align-self: flex-start;
@@ -14,9 +14,10 @@ export const Header = styled.header`
     align-items: flex-end;
 
     h1{
-        margin-left: 50px;
-        font-size: 4em;
+       
+        font-size: 2.5em;
         color: white;
+       margin: 50px 50px 0 50px;
     }
 
     a {
