@@ -25,7 +25,20 @@ export const ContainerOne = styled.div`
 export const ContainerTwo = ContainerOne.extend`
     flex-direction: column;
     justify-content: space-between;
+    margin-bottom: 50px;
     
+
+`
+export const ContainerThree = styled.div`
+    min-height: 50vh;
+    width: 90vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 50px 0;
+    border: 2px solid black;
+    background-color: #E1E3E3;
+    flex: 1 0 auto;
 
 `
 
@@ -46,6 +59,33 @@ export const CommentLeft = styled.div`
 
     img{
         border-radius: 100px;
+        height: 100%;
+        width: auto;
+    }
+`
+
+export const UserContainer = styled.div`
+    height: 100%;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    marign-top: 10px;
+
+    h2{
+        font-size: .95em;
+        color: #00A676
+    }
+
+`
+export const UserImgContainer = styled.div`
+    width: 50%;
+    height: 20vh;
+    border: 1px solid black;
+    overflow: hidden;
+
+    img {
         height: 100%;
         width: auto;
     }
@@ -100,7 +140,10 @@ export default { PageContainer,
                 ContainerOne, 
                 SplashImg,  
                 LinkContainer, 
-                ContainerTwo, 
+                ContainerTwo,
+                ContainerThree, 
                 SplashImgTwo,
                 CommentContainer,
-                CommentLeft }
+                CommentLeft,
+                UserContainer,
+                UserImgContainer}

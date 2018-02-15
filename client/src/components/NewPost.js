@@ -1,14 +1,21 @@
-import React, { Component } from 'react'
+import React from 'react'
 import axios from 'axios'
+// import Redirect from 'react-router-dom/Redirect';
 
 const  NewPost =(props) => {
+
+  const handleSubmit = (event) =>{
+        event.preventDefault()
+        props.newPosts()
+        
+    }
 
 
 
         return (
 
             <div>
-                < form onSubmit={props.newPosts} >
+                < form onSubmit={handleSubmit} >
                     <input
                         name="title" placeholder="title" type="text" onChange={props.handleChange}
                     />

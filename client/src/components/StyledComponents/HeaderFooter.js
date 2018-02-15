@@ -11,6 +11,7 @@ export const Header = styled.header`
     align-self: flex-start;
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
 
     h1{
         margin-left: 50px;
@@ -18,14 +19,18 @@ export const Header = styled.header`
         color: white;
     }
 
-    a{
+    a {
         font-size: 1.2em;
         text-decoration: none;
         color: white;
-        margin-right: 50px;
         margin-bottom: 0px;
-        align-self: flex-end;
+        align-self: flex-start;
+    
+        &:hover {
+            color:#0A2463;
+        }
     }
+
 
 `
 
