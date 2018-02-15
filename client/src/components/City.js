@@ -3,6 +3,7 @@ import axios from 'axios'
 import NewPost from './NewPost'
 import {Header, Footer} from './StyledComponents/HeaderFooter'
 import {PageContainer, SplashImgTwo, ContainerTwo, CommentContainer, CommentLeft} from './StyledComponents/Containers'
+import{Button} from './StyledComponents/Buttons'
 
 class City extends Component {
 
@@ -14,7 +15,7 @@ class City extends Component {
         newPost: {
             title: "",
             description: "",
-            user_id: "1", //hacked motherfucker
+            user_id: `${this.props.userId}`, //hacked motherfucker
             city_id: `${this.props.match.params.id}`
         }
     }
@@ -42,7 +43,8 @@ class City extends Component {
     addNewPost = (newPost) => {
         const posts = [...this.state.posts]
         posts.push(newPost)
-        this.setState({ posts })
+        this.componentWillMount()
+        this.setState({ posts: posts, isNewPost: false })
 
 
     }
@@ -86,12 +88,8 @@ class City extends Component {
         const users = this.state.users
         // console.log(`this is users state:`, users) console.log(posts)
         return (
-            this.state.isNewPost ? <NewPost handleChange={this.handleChange} newPosts={this.newPostPost} /> :
-
-                <PageContainer>
-                    <Header>
-                    <h1>RoamAtl</h1>
-                    </Header>
+            this.state.isNewPost ? <NewPost handleChange={this.handleChange} newPosts={this.newPostPost}  /> :
+            <div>
                     <h2>{city.name}</h2>
                     <SplashImgTwo>
                     <img src={city.city_url} alt={city.name}/>
@@ -119,16 +117,16 @@ class City extends Component {
                                         <div>
                                         <h3>{post.title}</h3>
                                         <p>{post.description}</p>
+                                        <a href={`/posts/${post.id}`}>Read More</a>
                                         </div>
                                     </CommentContainer>
                                 )
                             })}
-
+                            <Button onClick={() => { { this.setState({ isNewPost: true }) } }}>New Post</Button>
                     </ContainerTwo>
                     {/* new post button */}
-                    <button onClick={() => { { this.setState({ isNewPost: true }) } }}>New Post</button>
-                    <Footer />
-                </PageContainer>
+                    
+                    </div>
 
         )
     }
