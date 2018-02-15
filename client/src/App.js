@@ -134,9 +134,9 @@ class App extends Component {
     return (
       <PageContainer>
       <Header>
-        <h1>Roam</h1>
-        {this.state.isUserLogedIn ? <h2><a href={`/users/${this.state.currentUser.id}`}>{this.state.currentUser.name}/</a><a href="/users">SignOut</a></h2>
-        : <h2><a href="/users">Sign-In/</a><a href="/users/new">Sign up</a></h2>
+        <h1><a href="/">Roam</a></h1>
+        {this.state.isUserLogedIn ? <div><a href={`/users/${this.state.currentUser.id}`}>{this.state.currentUser.name}/</a><a href="/">SignOut</a></div>
+        : <div><a href="/users">Sign-In/</a><a href="/users/new">Sign-up</a></div>
         }
       </Header>
       <Router>

@@ -8,18 +8,18 @@ class Homepage extends Component {
 
     render() {
         return (
-            
-                
-                
-                    <div>
-                   
-                
+
+
+
+            <div>
+
+
                 <SplashImg>
                     <img src={skyline} alt="Skyline" />
                 </SplashImg>
-                
+
                 <ContainerOne>
-                <h2>{this.props.user.name}</h2>
+                    <h2>{this.props.user.name}</h2>
 
                     {
                         this.props.cities.map((city) => {
@@ -32,9 +32,9 @@ class Homepage extends Component {
                         })
                     }
                 </ContainerOne>
-             
 
-                </div>
+
+            </div>
 
 
         )
