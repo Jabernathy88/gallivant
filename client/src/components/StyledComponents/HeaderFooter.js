@@ -14,14 +14,14 @@ export const Header = styled.header`
     align-items: flex-end;
 
     h1{
-       
-        font-size: 2.5em;
+        font-family: 'Amatic SC', cursive;
+        font-size: 2.8em;
         color: white;
-       margin: 50px 50px 0 50px;
+        margin: 50px 50px 0 50px;
     }
 
     a {
-        font-size: 1.2em;
+        font-size: 1.9em;
         text-decoration: none;
         color: white;
         margin-bottom: 0px;

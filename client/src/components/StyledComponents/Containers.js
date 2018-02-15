@@ -16,12 +16,12 @@ export const PageContainer = styled.div`
 
 export const ContainerOne = styled.div`
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex: 1 0 auto;
-    background: url(${Skyline}) center no-repeat;
+    background: linear-gradient(0deg, rgba(36,35,37,0.6), rgba(36,35,37,0.6)), url(${Skyline}) center no-repeat;
     background-size: cover;
 
 
@@ -30,9 +30,12 @@ export const ContainerOne = styled.div`
 
 
 `
-export const ContainerTwo = ContainerOne.extend`
+export const ContainerTwo = styled.div`
+    
+    width: 100vw;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 50px;
     background: none;
     
@@ -52,18 +55,21 @@ export const ContainerThree = styled.div`
 `
 
 export const CommentContainer = styled.div`
-    margin: 10px auto;
+    margin: 20px auto;
     height: 20vh;
     width: 50%;
     display:flex;
+    justify-content: space-around;
+    align-items: center;
     border: 1px solid black;
-    background-color:#E0D0C1;
+    background-color:#F7F9F9;
 
 `
 export const CommentLeft = styled.div`
-    height: 70%;
-    width: 45%;
+    height: 150px;
+    width: 150px;
     overflow: hidden;
+
     
 
     img{
@@ -100,44 +106,67 @@ export const UserImgContainer = styled.div`
     }
 `
 
-export const SplashImg = styled.div`
+
+export const SplashImgTwo = styled.div`
+        marign: 30px 0;
         height: 40vh;
         width: 100vw;
         overflow: hidden;
         border: 2px solid black;
+        position: relative;
+        text-align: center;
 
         img {
-            height: auto;
-            width: auto;
-            transform: translateY(-650px);
-        }
-`
-export const SplashImgTwo = SplashImg.extend`
+            margin: 0;
+            width: 100%;
 
-        img{
-            transform: translateY(-250px) translateX(-55px);
+            transform: translateY(-240px);
+        }
+        h2 {
+            margin: 0;
+            font-family: 'Lobster', cursive;
+            color: #FFC857;
+            -webkit-text-stroke: .5px black;
+            font-size: 10em;
+            position: absolute;
+            z-index: 1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 `
 
 export const LinkContainer = styled.div`
         margin: 40px 0;
-        height: 50vh;
+        height: 60vh;
         width: 30vw;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         overflow: hidden;
+        color: white;
+        text-align: center;
+        
+        h1{
+            font-family: 'Patua One', cursive;
+            font-size: 3em;
+            margin: 0;
+        }
+        p{
+            font-size: 1.5em;
+        }
 
         a{
-            color: White;
+            font-size: 4em;
+            font-family: 'Lobster', cursive;
+            color: white;
+            text-decoration: none;
 
-        }
-        img {
-            height: 50%;
-            width: auto;
-            transform: translateY(-20px);
-            border: 1px solid black;
+            :hover {
+                color:#FFC857;
+            }
+
         }
 
 `
@@ -145,9 +174,9 @@ export const LinkContainer = styled.div`
 
 
 
+
 export default { PageContainer, 
-                ContainerOne, 
-                SplashImg,  
+                ContainerOne,  
                 LinkContainer, 
                 ContainerTwo,
                 ContainerThree, 

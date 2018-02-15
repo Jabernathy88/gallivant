@@ -20,11 +20,14 @@ class Homepage extends Component {
 
 
                         <LinkContainer>
+                        <h1>Let's Go Places...</h1>
+                        <p>With <span>Roam</span>, you never have to go alone. We offer reviews and comments about many places around the world, so you can be sure of what to do in the city you're visiting! See what others have said about our two pilot cites below:</p>
+
                     {
                         this.props.cities.map((city) => {
                             return (
                                 
-                                    <Link to={`/cities/${city.id}`}> <h1>{city.name}</h1></Link>
+                                    <Link to={`/cities/${city.id}`}> {city.name}</Link>
                                     
                                 
                             )

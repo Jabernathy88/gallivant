@@ -8,7 +8,7 @@ import UserView from './components/UsersView'
 import UserShow from './components/UserShow'
 import NewUser from './components/NewUser'
 import {Header, Footer} from './components/StyledComponents/HeaderFooter'
-import {PageContainer} from './components/StyledComponents/Containers'
+import {PageContainer, ContainerOne} from './components/StyledComponents/Containers'
 
 class App extends Component {
 
@@ -139,6 +139,7 @@ class App extends Component {
         : <div style={{marginRight: "50px"}}><a href="/users">Sign-In/</a><a href="/users/new">Sign-up</a></div>
         }
       </Header>
+      <ContainerOne>
       <Router>
         <div>
           <Switch>
@@ -151,6 +152,7 @@ class App extends Component {
           </Switch>
         </div>
       </Router>
+      </ContainerOne>
       <Footer />
       </PageContainer>
     );

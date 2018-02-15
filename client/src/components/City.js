@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import styled from 'styled-components'
 import NewPost from './NewPost'
 import { Header, Footer } from './StyledComponents/HeaderFooter'
 import { PageContainer, SplashImgTwo, ContainerTwo, CommentContainer, CommentLeft } from './StyledComponents/Containers'
 import { Button } from './StyledComponents/Buttons'
+import { Link } from 'react-router-dom'
 
 class City extends Component {
 
@@ -87,17 +89,58 @@ class City extends Component {
         const city = this.state.city
         const posts = this.state.posts
         const users = this.state.users
-        // console.log(`this is users state:`, users) console.log(posts)
+        const Container = styled.div`
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        `
+        const CommentRight = styled.div`
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 60%;
+            height: 100%;
+            overflow: hidden;
+            
+            h3{
+                font-style: italic;
+                margin: 0;
+                padding: 0;
+            }
+            h4{
+                font-size: .9em;
+                margin: 0;
+            }
+            p {
+                margin: 0 0 10px 0;
+                height: 1.5em;
+                width: 100%;
+            }
+            a{
+                color:#00A676;
+                text-decoration: none;
+            }
+
+        `
         return (
             this.state.isPageNotLoad ? <div></div> :
                 this.state.isNewPost ? <NewPost handleChange={this.handleChange} newPosts={this.newPostPost} /> :
-                    <div>
-                        <h2>{city.name}</h2>
+                    <Container>
+                        
+                        
                         <SplashImgTwo>
                             <img src={city.city_url} alt={city.name} />
+                            <h2>{city.name}</h2>
+                        
                         </SplashImgTwo>
-
+                        <Button onClick={() => { { this.setState({ isNewPost: true }) } }}>New Post</Button>
                         <ContainerTwo>
+                        
+                    
+    
+            
 
                             {this.state.posts.map((post) => {
                             
@@ -113,13 +156,14 @@ class City extends Component {
                                             <CommentLeft>
                                                 <img src={user.photo_url} alt={user.name} />
                                             </CommentLeft>
-                                            <p>{user.name}</p>
+                        
                                         </div>
-                                        <div>
+                                        <CommentRight>
                                             <h3>{post.title}</h3>
+                                            <h4>by: {user.name}</h4>
                                             <p>{post.description}</p>
-                                            <a href={`/posts/${post.id}`}>Read More</a>
-                                        </div>
+                                            <Link to={`/posts/${post.id}`}>Read More...</Link>
+                                        </CommentRight>
                                     </CommentContainer>
                                 )
 
@@ -129,11 +173,11 @@ class City extends Component {
 
                             )}
 
-                            <Button onClick={() => { { this.setState({ isNewPost: true }) } }}>New Post</Button>
+                            
                         </ContainerTwo>
                         {/* new post button */}
 
-                    </div>
+                    </Container>
 
         )
     }
