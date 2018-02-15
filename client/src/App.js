@@ -44,7 +44,7 @@ class App extends Component {
     const users = [...this.state.users]
     users.splice(userToRemove, 1)
     this.componentWillMount()
-    this.setState({ users })
+    this.setState({ users: users })
   }
 
   loginUser = async (userId) => {

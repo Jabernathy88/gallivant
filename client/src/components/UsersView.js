@@ -31,7 +31,7 @@ class UsersView extends Component {
                             <img src={user.photo_url} alt={user.name}/>
                         </UserImgContainer>
     
-                    <Link to={`/users/${user.id}`}>to user posts</Link>
+                    <Link to={`/users/${user.id}`}>to Profile</Link>
                     <ButtonLogin onClick={()=>this.handleLogin(user.id)}>Login</ButtonLogin>
                     </UserContainer>
                     )

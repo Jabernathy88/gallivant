@@ -114,8 +114,9 @@ class City extends Component {
                 margin: 0;
             }
             p {
+                overflow: hidden;
                 margin: 0 0 10px 0;
-                height: 1.5em;
+                height: 1.2em;
                 width: 100%;
             }
             a{

@@ -1,9 +1,17 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import axios from 'axios'
-import {Redirect} from 'react-router-dom'
-import EditUser from'./EditUser'
+import { Redirect } from 'react-router-dom'
+import EditUser from './EditUser'
+import { Button, ButtonLogin } from './StyledComponents/Buttons.js'
+import styled from 'styled-components';
 
+const DeleteButton = ButtonLogin.extend`
+    background-color: red;
+`
 
+const Container = styled.div`
+    color: white;
+`
 
 class UserShow extends Component {
     state = {
@@ -12,15 +20,15 @@ class UserShow extends Component {
         posts: [],
         redirect: false,
         redirectToEdit: false,
-        
+
     }
-    async componentWillMount(){
+    async componentWillMount() {
 
         const res = await axios.get(`/api/users/${this.props.match.params.id}`)
         const resPost = await axios.get(`/api/posts`)
         const postArray = []
         const id = parseInt(this.props.match.params.id)
-        
+
         resPost
             .data
             .map((post) => {
@@ -32,11 +40,11 @@ class UserShow extends Component {
             })
         postArray.reverse()
         this.setState({ user: res.data, posts: postArray })
-        
-        
+
+
     }
 
-    deleteUser = async ()=>{
+    deleteUser = async () => {
         const userId = this.props.match.params.id
         const res = await axios.delete(`/api/users/${userId}`)
         const user = this.state.user
@@ -45,25 +53,25 @@ class UserShow extends Component {
 
     }
 
-    setStateToTrue = () =>{
+    setStateToTrue = () => {
 
-        this.setState({redirect: true})
+        this.setState({ redirect: true })
     }
 
-    handleDelete = () =>{
-    
+    handleDelete = () => {
+
         this.setStateToTrue()
         this.deleteUser()
-        
+
     }
 
 
-    editUser = async() => {
+    editUser = async () => {
         try {
             const response = await axios.patch(`/api/users/${this.state.user.id}`, this.state.user)
-            
-            this.setState({updatedUser: response.data, redirectToEdit: false})
-        } catch(error) {
+
+            this.setState({ updatedUser: response.data, redirectToEdit: false })
+        } catch (error) {
             console.log(error)
         }
     }
@@ -73,59 +81,55 @@ class UserShow extends Component {
             ...this.state.user
         }
         updateUser[event.target.name] = event.target.value
-        this.setState({user: updateUser})
+        this.setState({ user: updateUser })
     }
 
     handleEdit = (event) => {
         event.preventDefault()
         this.editUser()
-        this.setState({redirectToEdit: false})
+        this.setState({ redirectToEdit: false })
     }
 
-    setStateToEdit = () =>{
-        this.setState({redirectToEdit: true})
+    setStateToEdit = () => {
+        this.setState({ redirectToEdit: true })
     }
 
     deleteConfirm = () => {
-        if (window.confirm(`Are you sure you want to delete ${this.state.user.name}?`)){
+        if (window.confirm(`Are you sure you want to delete ${this.state.user.name}?`)) {
             this.handleDelete()
         }
         else {
-            this.setState({redirect: true})
+            this.setState({ redirect: true })
         }
     }
 
 
 
-    render(){
+    render() {
 
-        return(
+        return (
             this.state.redirect ? <Redirect to={'/users'} /> :
-                this.state.redirectToEdit ? <EditUser user={this.state.user} handleEdit={this.handleEdit} handleChange={this.handleChange}/> :
-            <div>
-                <h1>{this.state.user.name}</h1>
-                <img width="200" src={this.state.user.photo_url} alt={this.state.user.name}/>
+                this.state.redirectToEdit ? <EditUser user={this.state.user} handleEdit={this.handleEdit} handleChange={this.handleChange} /> :
+                    <Container>
+                        <h1>{this.state.user.name}</h1>
+                        <img width="200" src={this.state.user.photo_url} alt={this.state.user.name} />
 
-            {
-                this.state.posts.map((post)=>{
-                    return (
-                        <div>
-                        <h3>{post.title}</h3>
-                        <p>{post.description}</p>
-                        </div>
-                    )
-                })
-            }
-            <button onClick={this.setStateToEdit}>Edit</button>
-            <button onClick={this.deleteConfirm}>Delete</button>
-            </div>
+                        {
+                            this.state.posts.map((post) => {
+                                return (
+                                    <div>
+                                        <h3>{post.title}</h3>
+                                        <p>{post.description}</p>
+                                    </div>
+                                )
+                            })
+                        }
+                        <ButtonLogin onClick={this.setStateToEdit}>Edit</ButtonLogin>
+                        <DeleteButton onClick={this.deleteConfirm}>Delete</DeleteButton>
+                    </Container>
         )
     }
 }
 
 
 export default UserShow
-
-
-
-

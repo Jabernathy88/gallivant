@@ -31,7 +31,7 @@ export const ButtonLogin = Button.extend`
 
     :hover {
         color:#2E4052;
-        background-color:#FFC857;;
+        background-color:#FFC857;
 
     }
 `

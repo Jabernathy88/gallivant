@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import {Redirect} from 'react-router-dom'
+import {Redirect, Link} from 'react-router-dom'
+import styled from 'styled-components'
 import axios from 'axios'
 import EditPost from './EditPost'
+import {Button, ButtonLogin} from './StyledComponents/Buttons'
 
 
 
@@ -85,20 +87,56 @@ class Post extends Component  {
         const post = this.state.post
         const city = this.state.city
         const user = this.state.user
+        const PostCard = styled.div`
+            height: 60vh;
+            width: 30vw;
+            background-color:#F7F9F9;
+            display:flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            border: 2px solid black;
+
+            p{
+                text-align: center;
+                width: 50%;
+            }
+
+            h1, h2, h3 {
+                margin: 0;
+            }
+
+            a {
+                font-size: 1.5em;
+                text-decoration: none;
+                color:#FFC857;
+                :hover{
+                    color:#2E4052;
+                }
+            }
+
+        
+        `
+        const EditButton = Button.extend `
+        background-color:#2E4052;
+        :hover {
+            color:#2E4052;
+            background-color:#FFC857;
+        `
         
         return (
     this.state.redirect ? <Redirect to={`/cities/${city.id}`} /> :
             this.state.isEditPost ? <EditPost handleEditChange={this.handleEditChange} post={this.state.post} handleEdit={this.handleEdit} editPosts={this.editPosts} /> :
-            <div>
+            <PostCard>
                 <h1>{post.title}</h1>
                 <h2>{city.name}</h2>
                 <h3>by: {user.name}</h3>
                 <p>{post.description}</p>
-                <button onClick={() => {this.setState({isEditPost: true})}}>Edit</button>
-                <button onClick={this.deleteConfirm}>Delete</button>
-                <a href={`/cities/${city.id}`}>Go back to {city.name}</a>
+                <EditButton onClick={() => {this.setState({isEditPost: true})}}>Edit</EditButton>
+                <Button onClick={this.deleteConfirm}>Delete</Button>
+                <Link to={`/cities/${city.id}`}>Go back to {city.name}</Link>
                 
-            </div>
+            </PostCard>
         )
 
 
