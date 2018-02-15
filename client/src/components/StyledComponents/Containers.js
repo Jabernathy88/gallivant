@@ -15,7 +15,7 @@ export const PageContainer = styled.div`
 `
 
 export const ContainerOne = styled.div`
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: space-around;
@@ -23,6 +23,8 @@ export const ContainerOne = styled.div`
     flex: 1 0 auto;
     background: url(${Skyline}) center no-repeat;
     background-size: cover;
+
+
 
   
 
@@ -32,6 +34,7 @@ export const ContainerTwo = ContainerOne.extend`
     flex-direction: column;
     justify-content: space-between;
     margin-bottom: 50px;
+    background: none;
     
 
 `
@@ -127,7 +130,7 @@ export const LinkContainer = styled.div`
         overflow: hidden;
 
         a{
-            color: black;
+            color: White;
 
         }
         img {
