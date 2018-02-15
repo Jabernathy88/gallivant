@@ -18,7 +18,8 @@ class App extends Component {
     users: [],
     loginedUserId: '',
     currentUser: {},
-    newUser: {}
+    newUser: {},
+    isUserLogedIn: false,
   }
 
   async componentWillMount() {
@@ -50,7 +51,7 @@ class App extends Component {
     const res = await axios.get(`/api/users/${userId}`)
 
 
-    this.setState({ loginedUserId: userId, currentUser: res.data })
+    this.setState({ loginedUserId: userId, currentUser: res.data, isUserLogedIn: true })
   }
 
   addNewUser = (newUser) => {
@@ -134,7 +135,9 @@ class App extends Component {
       <PageContainer>
       <Header>
         <h1>Roam</h1>
-        <h2><a href="/users">Sign-In</a>/<a href="/users/new">Sign up</a></h2>
+        {this.state.isUserLogedIn ? <h2><a href={`/users/${this.state.currentUser.id}`}>{this.state.currentUser.name}/</a><a href="/users">SignOut</a></h2>
+        : <h2><a href="/users">Sign-In/</a><a href="/users/new">Sign up</a></h2>
+        }
       </Header>
       <Router>
         <div>
