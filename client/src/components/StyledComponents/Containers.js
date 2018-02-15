@@ -154,6 +154,7 @@ export const LinkContainer = styled.div`
             margin: 0;
         }
         p{
+
             font-size: 1.5em;
         }
 
