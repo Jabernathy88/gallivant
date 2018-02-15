@@ -37,6 +37,15 @@ class App extends Component {
     this.componentWillMount()
     this.setState({ posts })
   }
+
+  removeUser = (user) => {
+    const userToRemove = this.state.users.indexOf(user)
+    const users = [...this.state.users]
+    users.splice(userToRemove, 1)
+    this.componentWillMount()
+    this.setState({ users })
+  }
+
   loginUser = async (userId) => {
     const res = await axios.get(`/api/users/${userId}`)
 
@@ -69,7 +78,7 @@ class App extends Component {
       })
 
   }
- 
+
 
   handleChange = (event) => {
     const attribute = event.target.name
@@ -103,7 +112,7 @@ class App extends Component {
 
     const userShowComponent = (props) => {
       return (
-        <UserShow {...props}  />
+        <UserShow {...props} removeUser={this.removeUser} />
       )
     }
 
