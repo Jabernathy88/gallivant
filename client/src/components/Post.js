@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Redirect} from 'react-router-dom'
 import axios from 'axios'
+import EditPost from './EditPost'
 
 
 
@@ -12,6 +13,7 @@ class Post extends Component  {
         city: {},
         user: {},
         isStateNotReady: true,
+        isEditPost: false,
         redirect: false
     }
 
@@ -54,6 +56,30 @@ class Post extends Component  {
         }
     }
 
+    editPosts = async() => {
+        try {
+            const response = await axios.patch(`/api/posts/${this.state.post.id}`, this.state.post)
+            const updatedPost = response.data
+            this.setState({updatedPost, isEditPost: false})
+        }
+        catch(error) {
+            console.log(error)
+        }
+    }
+    
+    handleEditChange = (event) => {
+        const updatePost = {
+            ...this.state.post
+        }
+        updatePost[event.target.name] = event.target.value
+        this.setState({post: updatePost})
+    }
+
+    handleEdit = (event) => {
+        event.preventDefault()
+        this.editPosts()
+    }
+
 
     render() {
         const post = this.state.post
@@ -61,15 +87,14 @@ class Post extends Component  {
         const user = this.state.user
         
         return (
-
     this.state.redirect ? <Redirect to={`/cities/${city.id}`} /> :
-        
+            this.state.isEditPost ? <EditPost handleEditChange={this.handleEditChange} post={this.state.post} handleEdit={this.handleEdit} editPosts={this.editPosts} /> :
             <div>
                 <h1>{post.title}</h1>
                 <h2>{city.name}</h2>
                 <h3>by: {user.name}</h3>
                 <p>{post.description}</p>
-                <button>Edit</button>
+                <button onClick={() => {this.setState({isEditPost: true})}}>Edit</button>
                 <button onClick={this.deleteConfirm}>Delete</button>
                 <a href={`/cities/${city.id}`}>Go back to {city.name}</a>
                 
