@@ -56,14 +56,7 @@ class UserShow extends Component {
         this.deleteUser()
         
     }
-    deleteConfirm = () => {
-        if (window.confirm(`Are you sure you want to delete ${this.state.user.name}?`)){
-            this.handleDelete()
-        }
-        else {
-            this.setState({redirect: true})
-        }
-    }
+
 
     editUser = async() => {
         try {
@@ -93,6 +86,14 @@ class UserShow extends Component {
         this.setState({redirectToEdit: true})
     }
 
+    deleteConfirm = () => {
+        if (window.confirm(`Are you sure you want to delete ${this.state.user.name}?`)){
+            this.handleDelete()
+        }
+        else {
+            this.setState({redirect: true})
+        }
+    }
 
 
 
