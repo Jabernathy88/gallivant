@@ -3,6 +3,7 @@ import axios from 'axios'
 import NewPost from './NewPost'
 import {Header, Footer} from './StyledComponents/HeaderFooter'
 import {PageContainer, SplashImgTwo, ContainerTwo, CommentContainer, CommentLeft} from './StyledComponents/Containers'
+import{Button} from './StyledComponents/Buttons'
 
 class City extends Component {
 
@@ -88,12 +89,7 @@ class City extends Component {
         // console.log(`this is users state:`, users) console.log(posts)
         return (
             this.state.isNewPost ? <NewPost handleChange={this.handleChange} newPosts={this.newPostPost}  /> :
-
-                <PageContainer>
-                    <Header>
-                    <h1>RoamAtl</h1>
-                    <a href='/'><h2>Home</h2></a>
-                    </Header>
+            <div>
                     <h2>{city.name}</h2>
                     <SplashImgTwo>
                     <img src={city.city_url} alt={city.name}/>
@@ -126,12 +122,11 @@ class City extends Component {
                                     </CommentContainer>
                                 )
                             })}
-
+                            <Button onClick={() => { { this.setState({ isNewPost: true }) } }}>New Post</Button>
                     </ContainerTwo>
                     {/* new post button */}
-                    <button onClick={() => { { this.setState({ isNewPost: true }) } }}>New Post</button>
-                    <Footer />
-                </PageContainer>
+                    
+                    </div>
 
         )
     }

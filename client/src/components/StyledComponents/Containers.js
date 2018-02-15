@@ -25,6 +25,7 @@ export const ContainerOne = styled.div`
 export const ContainerTwo = ContainerOne.extend`
     flex-direction: column;
     justify-content: space-between;
+    margin-bottom: 50px;
     
 
 `
