@@ -6,10 +6,10 @@ const EditPost = (props) => {
         <div>
             < form onSubmit={props.handleEdit} >
                 <input
-                    onChange={props.handleChange} name="title" placeholder="title" type="text" value={props.posts.title} 
+                    onChange={props.handleEditChange} name="title" placeholder="title" type="text" value={props.post.title} 
                 />
                 <textarea
-                    onChange={props.handleChange} name="description" placeholder="description" type="text" value={props.posts.description} 
+                    onChange={props.handleEditChange} name="description" placeholder="description" type="text" value={props.post.description} 
                     row="10" />
 
                 <input type="submit" value="submit" />
