@@ -4,13 +4,31 @@ import { Redirect } from 'react-router-dom'
 import EditUser from './EditUser'
 import { Button, ButtonLogin } from './StyledComponents/Buttons.js'
 import styled from 'styled-components';
+import { PostContainer } from './StyledComponents/Containers'
 
 const DeleteButton = ButtonLogin.extend`
     background-color: red;
 `
 
 const Container = styled.div`
+    min-height: 100vh;
+    width: 100vw;
     color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+`
+
+const UserCard = styled.div`
+    min-height: 90%;
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid white;
+
 `
 
 class UserShow extends Component {
@@ -111,21 +129,23 @@ class UserShow extends Component {
             this.state.redirect ? <Redirect to={'/users'} /> :
                 this.state.redirectToEdit ? <EditUser user={this.state.user} handleEdit={this.handleEdit} handleChange={this.handleChange} /> :
                     <Container>
+                        <UserCard>
                         <h1>{this.state.user.name}</h1>
                         <img width="200" src={this.state.user.photo_url} alt={this.state.user.name} />
 
                         {
                             this.state.posts.map((post) => {
                                 return (
-                                    <div>
+                                    <PostContainer>
                                         <h3>{post.title}</h3>
                                         <p>{post.description}</p>
-                                    </div>
+                                    </PostContainer>
                                 )
                             })
                         }
                         <ButtonLogin onClick={this.setStateToEdit}>Edit</ButtonLogin>
                         <DeleteButton onClick={this.deleteConfirm}>Delete</DeleteButton>
+                        </UserCard>
                     </Container>
         )
     }

@@ -47,6 +47,7 @@ export const Footer = styled.footer`
 
 
     p {
+        margin-right: 30px;
         font-size: .5em;
         color: white;
         text-transform: uppercase;
