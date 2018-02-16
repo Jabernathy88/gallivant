@@ -84,8 +84,8 @@ export const PostContainer = CommentContainer.extend`
 
 `
 export const CommentLeft = styled.div`
-    height: 150px;
-    width: 150px;
+    height: 100px;
+    width: 100px;
     overflow: hidden;
 
     
