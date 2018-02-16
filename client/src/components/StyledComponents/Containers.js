@@ -138,7 +138,7 @@ export const SplashImgTwo = styled.div`
 
 export const LinkContainer = styled.div`
         margin: 40px 0;
-        height: 60vh;
+        height: 80vh;
         width: 30vw;
         display: flex;
         flex-direction: column;

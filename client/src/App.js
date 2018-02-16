@@ -153,7 +153,9 @@ class App extends Component {
         </div>
       </Router>
       </ContainerOne>
-      <Footer />
+      <Footer>
+        <p><small>Built by <span>Groupie McGroup-face</span>: Supriya Yerramilli, Eric Lu, Jeremy Abernathy, and Jasen Baker.</small></p>
+        </Footer>
       </PageContainer>
     );
   }

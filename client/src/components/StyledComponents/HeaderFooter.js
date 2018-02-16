@@ -15,9 +15,9 @@ export const Header = styled.header`
 
     h1{
         font-family: 'Amatic SC', cursive;
-        font-size: 2.8em;
+        font-size: 2.7em;
         color: white;
-        margin: 50px 50px 0 50px;
+        margin: 50px 50px -10px 50px;
     }
 
     a {
@@ -41,6 +41,22 @@ export const Footer = styled.footer`
     width: 100vw;
     background-color:#0A2463;
     align-self: flex-end;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+
+    p {
+        font-size: .5em;
+        color: white;
+        text-transform: uppercase;
+    }
+    span{
+        font-size: .7em;
+        font-weight: bold;
+        color:#FF715B;
+
+    }
 `
 
 
