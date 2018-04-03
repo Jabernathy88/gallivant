@@ -65,9 +65,27 @@ export const CommentContainer = styled.div`
     background-color:#F7F9F9;
 
 `
+export const PostContainer = CommentContainer.extend`
+        height: 10%;
+        width: 95%;
+        flex-direction: column;
+        border: none;
+        background-color: transparent;
+
+        h3{
+            margin: 0;
+        }
+
+        p {
+            margin: 0;
+            font-size: 0.9em;
+            align-self: flex-start;
+        }
+
+`
 export const CommentLeft = styled.div`
-    height: 150px;
-    width: 150px;
+    height: 100px;
+    width: 100px;
     overflow: hidden;
 
     
@@ -91,6 +109,14 @@ export const UserContainer = styled.div`
     h2{
         font-size: .95em;
         color: #00A676
+    }
+    a{
+        text-decoration: none;
+        color:#FF715B;
+
+        :hover{
+            color:#241E4E;
+        }
     }
 
 `
@@ -138,7 +164,7 @@ export const SplashImgTwo = styled.div`
 
 export const LinkContainer = styled.div`
         margin: 40px 0;
-        height: 60vh;
+        height: 80vh;
         width: 30vw;
         display: flex;
         flex-direction: column;
@@ -154,6 +180,7 @@ export const LinkContainer = styled.div`
             margin: 0;
         }
         p{
+
             font-size: 1.5em;
         }
 
@@ -182,6 +209,7 @@ export default { PageContainer,
                 ContainerThree, 
                 SplashImgTwo,
                 CommentContainer,
+                PostContainer,
                 CommentLeft,
                 UserContainer,
                 UserImgContainer}
