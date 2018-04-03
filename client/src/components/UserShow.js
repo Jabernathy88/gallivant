@@ -12,7 +12,6 @@ class UserShow extends Component {
         posts: [],
         redirect: false,
         redirectToEdit: false,
-        
     }
     async componentWillMount(){
 
@@ -21,9 +20,7 @@ class UserShow extends Component {
         const postArray = []
         const id = parseInt(this.props.match.params.id)
         
-        resPost
-            .data
-            .map((post) => {
+        resPost.data.map((post) => {
                 if (post.user_id === id) {
                     postArray.push(post)
 

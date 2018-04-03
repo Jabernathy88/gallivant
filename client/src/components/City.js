@@ -30,9 +30,7 @@ class City extends Component {
         const responseCity = await axios.get(`/api/cities/${this.props.match.params.id}`)
         const responsePosts = await axios.get(`/api/posts`)
         const postArray = []
-        responsePosts
-            .data
-            .map((post) => {
+        responsePosts.data.map((post) => {
                 if (post.city_id === id) {
                     postArray.push(post)
 
@@ -48,8 +46,6 @@ class City extends Component {
         posts.push(newPost)
         this.componentWillMount()
         this.setState({ posts: posts, isNewPost: false })
-
-
     }
 
     handleChange = (event) => {
@@ -67,11 +63,8 @@ class City extends Component {
 
     newPostPost = () => {
         // console.log("POSTING?!")
-        axios
-            .post("/api/posts", this.state.newPost)
-            .then((response) => {
+        axios.post("/api/posts", this.state.newPost).then((response) => {
                 const updateNewPost = this.state.newPost
-
 
                 updateNewPost._id = response.data._id
 
